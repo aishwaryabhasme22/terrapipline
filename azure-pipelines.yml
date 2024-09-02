@@ -25,21 +25,18 @@ stages:
         provider: 'azurerm'
         command: 'validate'
     - task: TerraformTaskV4@4
-      displayName: Tf fmt
       inputs:
         provider: 'azurerm'
         command: 'custom'
-        customCommand: 'fmt'
         outputTo: 'console'
-        environmentServiceNameAzureRM: '${SERVICECONNECTION}'
+        customCommand: 'fmt'
+        environmentServiceNameAzureRM: 'Pay-As-You-Go(1)(64d34573-f6f3-4961-bc8f-a81b5e41bfc1)'
       
     - task: TerraformTaskV4@4
-      displayName: Tf plan
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        commandOptions: '-out $(Build.SourcesDirectory)/tfplanfile'
-        environmentServiceNameAzureRM: '${SERVICECONNECTION}'
+        environmentServiceNameAzureRM: 'Pay-As-You-Go(1)(64d34573-f6f3-4961-bc8f-a81b5e41bfc1)'
       
     - task: ArchiveFiles@2
       displayName: Archive files
